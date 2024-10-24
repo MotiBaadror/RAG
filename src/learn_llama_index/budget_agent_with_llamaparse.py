@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 from dir_configs import add_rootpath
 from learn_llama_index.set_llm import set_llm
 
-set_llm(model='llama2')
+model = 'llama3.2'
+set_llm(model=model)
 load_dotenv()
 
 
@@ -29,7 +30,7 @@ def get_index(storage_path, data_path='data/llamaparse_budget/2023_canadian_budg
     return index
 
 
-index2 = get_index("storage/llamaparse_cloud", "data/llamaparse_budget/2023_canadian_budget.pdf")
+index2 = get_index(f"storage/llamaparse_cloud_{model}", "data/llamaparse_budget/2023_canadian_budget.pdf")
 query_engine2 = index2.as_query_engine()
 
 response2 = query_engine2.query(
