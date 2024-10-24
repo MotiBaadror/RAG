@@ -1,6 +1,10 @@
 from learn_llama_index.set_index import get_index
+from learn_llama_index.set_llm import set_llm
 
-index = get_index( "storage/llamaparse_budget", "data/llamaparse_budget")
+model = 'llama3.2'
+set_llm(model=model)
+
+index = get_index(f"storage/llamaparse_budget_{model}", "data/llamaparse_budget")
 
 query_engine = index.as_query_engine()
 
