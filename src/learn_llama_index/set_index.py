@@ -5,10 +5,10 @@ from llama_index.core import SimpleDirectoryReader, VectorStoreIndex, StorageCon
 from dir_configs import add_rootpath
 from learn_llama_index.set_llm import set_llm
 
-set_llm()
-def get_index(storage_path, data_path):
+
+def get_index(storage_path, data_path, force=False):
     PERSIST_DIR = add_rootpath( storage_path)
-    if not os.path.exists(PERSIST_DIR):
+    if not os.path.exists(PERSIST_DIR) or force:
         print('Storage not found, creating new storage')
         # load the documents and create the index
         documents = SimpleDirectoryReader(add_rootpath(data_path)).load_data()
