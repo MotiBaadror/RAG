@@ -3,11 +3,12 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 from llama_index.llms.ollama import Ollama
 
 
-def set_llm():
-    Settings.llm = Ollama(model='llama3.2')
+def set_llm(model='llama3.2'):
+    print(f'Setting LLM model: {model}')
+    Settings.llm = Ollama(model=model)
 
     Settings.embed_model = OllamaEmbedding(
-        model_name="llama3.2",
+        model_name=model,
         base_url="http://localhost:11434",
         ollama_additional_kwargs={"mirostat": 0},
     )
