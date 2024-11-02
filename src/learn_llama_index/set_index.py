@@ -3,7 +3,6 @@ import os
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex, StorageContext, load_index_from_storage
 
 from dir_configs import add_rootpath
-from learn_llama_index.set_llm import set_llm
 
 
 def get_index(storage_path, data_path, force=False):

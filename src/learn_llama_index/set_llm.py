@@ -3,7 +3,7 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 from llama_index.llms.ollama import Ollama
 
 
-def set_llm(model='llama3.2'):
+def set_llm(model='tinyllama'):
     print(f'Setting LLM model: {model}')
     Settings.llm = Ollama(model=model)
 
@@ -12,5 +12,5 @@ def set_llm(model='llama3.2'):
         base_url="http://localhost:11434",
         ollama_additional_kwargs={"mirostat": 0},
     )
-    print( Settings.llm.complete('Hi, How are you?'))
+    print(Settings.llm.complete('Hi, How are you?'))
 
