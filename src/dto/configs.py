@@ -6,7 +6,7 @@ class QueryConfig:
     """
     Basic config for all the attribute used during the experiments
     """
-    data_path: str = 'data/codelon_data'
+    data_path: str = 'data/celdon_data'
     model_name: str = 'llama3.2'
     storage_path: str = None
     use_llama_parse: bool = True
