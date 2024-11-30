@@ -1,3 +1,4 @@
+from components.prompts import prompt_template
 from components.query_engine import get_agent_from_query_engine_and_tools
 from dto.configs import QueryConfig
 from excel_agentic_rag.fin_agents import  get_tools_from_fns, calculate_shareholder_equity,calculate_eps
@@ -9,7 +10,7 @@ def build_agent():
     """
     :return: agent with defined tool and storage loaded in the indextool
     """
-    config = QueryConfig()
+    config = QueryConfig(model_name='llama3.1')
     set_llm(model=config.model_name)
 
     index = get_index(config.storage_path ,config.data_path, use_llamaparse=True)
@@ -39,9 +40,10 @@ if __name__ == '__main__':
         q = input('provide a prompt for me\n>>>')
         if q =='q':
             break
-        final_prompt = f"{q},Go step by step, using a tool to do any math."
+        query = prompt_template.format(query= q)
+
         try:
-            response = agent.chat(final_prompt)
+            response = agent.chat(query)
             print(response)
         except:
             pass
