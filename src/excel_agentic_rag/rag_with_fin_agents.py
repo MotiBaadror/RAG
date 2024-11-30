@@ -6,6 +6,9 @@ from components.set_index import get_index
 from components.set_llm import set_llm
 
 def build_agent():
+    """
+    :return: agent with defined tool and storage loaded in the indextool
+    """
     config = QueryConfig()
     set_llm(model=config.model_name)
 
