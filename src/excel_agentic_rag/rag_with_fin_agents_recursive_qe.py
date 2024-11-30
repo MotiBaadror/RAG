@@ -3,8 +3,8 @@ from llama_index.core.tools import QueryEngineTool, ToolMetadata
 
 from excel_agentic_rag.fin_agents import get_agents_from_fn, get_tools_from_fns, \
     get_agent_from_tools, calculate_shareholder_equity,calculate_eps
-from learn_llama_index.set_index import get_index, get_document_from_index, get_recursive_query_engine
-from learn_llama_index.set_llm import set_llm
+from components.set_index import get_index, get_document_from_index, get_recursive_query_engine
+from components.set_llm import set_llm
 
 model = 'llama3.2'
 set_llm(model=model)

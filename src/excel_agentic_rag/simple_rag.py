@@ -1,5 +1,5 @@
-from learn_llama_index.set_index import get_index
-from learn_llama_index.set_llm import set_llm
+from components.set_index import get_index
+from components.set_llm import set_llm
 
 model = 'llama3.2'
 set_llm(model=model)

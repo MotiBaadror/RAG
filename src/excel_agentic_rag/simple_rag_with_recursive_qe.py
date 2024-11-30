@@ -1,5 +1,5 @@
-from learn_llama_index.set_index import get_index, get_document_from_index, get_recursive_query_engine
-from learn_llama_index.set_llm import set_llm
+from components.set_index import get_index, get_document_from_index, get_recursive_query_engine
+from components.set_llm import set_llm
 
 model = 'llama3.1'
 set_llm(model=model)
