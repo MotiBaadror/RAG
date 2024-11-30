@@ -29,3 +29,13 @@
 
 #### RAG + LLamaParse + Agent 
 ![AgenticRAG](./resources/AgenticRAG.png)
+
+
+### Next Steps
+
+Solutions:
+
+1. Utilizing close source LLM
+2. Building better workflow for agents( Langgraph/langchain ) and better chain of thought process
+3. Fine tuning LLM to do domain specific tasks
+4. Doing research for available tools that already have lot of tools implemented for the domain specific calculations to reduce vanila code and make code more maintainable
