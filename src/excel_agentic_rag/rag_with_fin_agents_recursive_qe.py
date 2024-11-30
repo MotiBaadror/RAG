@@ -13,17 +13,7 @@ index = get_index(f"storage/codelon_data_{model}", "data/codelon_data", use_llam
 
 documents = get_document_from_index(index)
 query_engine = get_recursive_query_engine(documents=documents)
-# query_engine = index.as_query_engine()
 
-
-# response = query_engine.query(
-#     "What would the EPS be for Techcorp if there is a 3 for 1 stock split?"
-# )
-# print(response)
-# response = query_engine.query(
-#     "Which of the companies is potentially overvalued?"
-# )
-# print(response)
 func_tools = get_tools_from_fns(fns=[calculate_shareholder_equity, calculate_eps])
 finance_tool = QueryEngineTool(
         query_engine=query_engine,
@@ -58,4 +48,3 @@ while True:
         print(response)
     except:
         pass
-        # print('Got a exception')

@@ -16,18 +16,7 @@ while True:
         break
     response = query_engine.query(q)
     print(response)
-# response = query_engine.query('how many companies are there?')
-# print(response)
 
-# response = query_engine.query(
 #     "What would the EPS be for Techcorp if there is a 3 for 1 stock split?"
-# )
-# print(response)
-# response = query_engine.query(
 #     "Which of the companies is potentially overvalued?"
-# )
-# print(response)
-# response = query_engine.query(
 #     "What is the shareholders’ equity for FinServ?"
-# )
-# print(response)
