@@ -1,17 +1,26 @@
 from llama_index.core import Settings
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
+from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.llms.openai import OpenAI
 
 from excel_agentic_rag.fin_agents import get_agents_from_fn, get_tools_from_fns, \
     get_agent_from_tools, calculate_shareholder_equity,calculate_eps
-from learn_llama_index.set_index import get_index
+from learn_llama_index.set_index import get_index, get_document_from_index, get_recursive_query_engine
 from learn_llama_index.set_llm import set_llm
 
-model = 'llama3.2'
-set_llm(model=model)
+# model = 'llama3.2'
+# set_llm(model=model)
+Settings.chunk_size = 512
+Settings.chunk_overlap = 64
+model = "gpt-3.5-turbo"
+Settings.llm = OpenAI(model=model)
+Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
 
 index = get_index(f"storage/codelon_data_{model}", "data/codelon_data", use_llamaparse=True)
 
-query_engine = index.as_query_engine()
+documents = get_document_from_index(index)
+query_engine = get_recursive_query_engine(documents=documents)
+# query_engine = index.as_query_engine()
 
 
 # response = query_engine.query(

@@ -1,3 +1,4 @@
+from llama_index.agent.openai import OpenAIAgent
 from llama_index.core.agent import ReActAgent
 from llama_index.core.tools import FunctionTool
 from pydantic import Field
@@ -40,9 +41,12 @@ def get_tools_from_fns(fns):
     return tools
 
 
-def get_agent_from_tools(llm, tools, context=None,max_iterations=10):
+def get_agent_from_tools(llm, tools, context=None,max_iterations=10, react_agent=False):
     if context is None:
         print('No context is provided for tool')
-    agent = ReActAgent.from_tools(tools, llm=llm, verbose=True, max_iterations=max_iterations)
+    if react_agent:
+        agent = ReActAgent.from_tools(tools, llm=llm, verbose=True, max_iterations=max_iterations, context=context)
+    else:
+        agent = OpenAIAgent.from_tools(tools, llm=llm)
     return agent
 

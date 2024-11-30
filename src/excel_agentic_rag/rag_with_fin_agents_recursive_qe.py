@@ -3,7 +3,7 @@ from llama_index.core.tools import QueryEngineTool, ToolMetadata
 
 from excel_agentic_rag.fin_agents import get_agents_from_fn, get_tools_from_fns, \
     get_agent_from_tools, calculate_shareholder_equity,calculate_eps
-from learn_llama_index.set_index import get_index
+from learn_llama_index.set_index import get_index, get_document_from_index, get_recursive_query_engine
 from learn_llama_index.set_llm import set_llm
 
 model = 'llama3.2'
@@ -11,7 +11,9 @@ set_llm(model=model)
 
 index = get_index(f"storage/codelon_data_{model}", "data/codelon_data", use_llamaparse=True)
 
-query_engine = index.as_query_engine()
+documents = get_document_from_index(index)
+query_engine = get_recursive_query_engine(documents=documents)
+# query_engine = index.as_query_engine()
 
 
 # response = query_engine.query(
@@ -37,7 +39,7 @@ all_tools = func_tools+[finance_tool]
 context = "If the user asks a question the you already know the answer to OR the user is making idle banter, just respond without calling any tools."
 
 
-agent = get_agent_from_tools(llm=Settings.llm, tools=all_tools,max_iterations=10, context=context)
+agent = get_agent_from_tools(llm=Settings.llm, tools=all_tools,max_iterations=10, context=context, react_agent=True)
 # prompt = "Which of the companies is potentially overvalued?"
 # prompt = "Give me shareholder equity for FinServ company"
 # prompt = "Give me share price for FinServ company, Go step by step, using a tool to do any math."
