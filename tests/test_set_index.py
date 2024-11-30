@@ -1,4 +1,4 @@
-from learn_llama_index.set_index import get_files
+from components.set_index import get_files
 
 
 def test_get_files():
